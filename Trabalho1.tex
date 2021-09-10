@@ -1,0 +1,127 @@
+\documentclass[12pt]{report}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{times}
+\usepackage{color}
+\usepackage{import}%Subdividir o .tex
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=cyan,
+	filecolor=cyan,      
+	urlcolor=cyan,
+}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{prop}[theorem]{Proposição}
+\newtheorem{ex}[theorem]{Exemplo}
+\newtheorem{obs}[theorem]{Observação}
+\newtheorem{cor}[theorem]{Corolário}
+\newtheorem{defn}[theorem]{Definição}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{exer}[theorem]{\color{red} Exercício \color{black}}
+\newenvironment{dem}[1][Demonstração]{\textbf{#1:}\ }  {\hfill\rule{1ex}{1ex}}
+
+
+%============================== Commands ==============
+\newcommand{\oo}{_}
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\pdi}[2]{\ensuremath{\langle #1 , #2 \rangle}}
+\newcommand{\pdr}[1]{\ensuremath{\langle #1  \rangle}}
+\usepackage{float}
+\everymath{\displaystyle}
+\usepackage{mathpazo}
+\newcommand{\lps}[2]{\ensuremath{\mathcal{L}^ {#1} (#2)}}
+\newcommand{\lpsloc}[2]{\ensuremath{\mathcal{L}^ {#1} \oo {\text{loc}} (#2)}}
+\newcommand{\supp}{\mathrm{supp\ }}
+\title{Trabalho de Geometria Riemanniana}
+\author{Moresco, H.T.\quad Pasqua, L. C. D.  \quad Rocha, W. A.}
+%================================================
+\begin{document}
+\maketitle
+\begin{exer}
+    Seja $\mathcal{E}$ um estrutura diferenciável de $M$. 
+    Mostre que existe uma única estrutura diferenciável maximal $\mathcal{E} \oo M$ em $M$ contendo $\mathcal{E}$.
+\end{exer}
+\begin{dem}
+    Defina $\mathcal{E} \oo M$ o conjunto das aplicações injetoras de abertos $U \subset \mathbb{R}^n$ em $M$ tais que se $x(U) \cap x\oo \alpha (U \oo {\alpha} ) = W \neq \emptyset  $ tem-se $x^{-1} (W)$ e $x \oo \alpha ^{-1} (W)$ abertos e as mudanças de coordenadas $x^{-1} \circ x \oo \alpha $ e $\inv{x \oo \alpha} \circ x$ são diferenciáveis, para $x \oo \alpha \in \mathcal{E}$. 
+    É claro que $\mathcal{E} \oo M$ contém $\mathcal{E}$, por definição de estrutura diferenciável. 
+    Assim, 
+    \[
+        \bigcup \oo {x \in \mathcal{E} \oo {M} } x(U) \supset \bigcup \oo {x \oo \alpha \in \mathcal{E}} x\oo \alpha (U \oo \alpha ) = M 
+    \]
+    Além disso, sejam $x : U \rightarrow M$ e $y :V \rightarrow M$ elementos de $\mathcal{E} \oo M$ tais que $x(U) \cap y(V)  = W' \neq \emptyset $. 
+    Mostremos que $\inv{x} (W')$ é aberto. 
+    Seja $q \in \inv{x} (W')$. 
+    Então, $p = x(q) \in W'$. 
+    Como $\mathcal{E}$ é estrutura diferenciável, existe $ x \oo \alpha \in \mathcal{E} $ tal que $p \in x \oo \alpha (U \oo \alpha )$. 
+    Observe que $\inv{x \oo \alpha} (x(U) \cap x \oo \alpha (U \oo \alpha))$ e $\inv{x \oo \alpha} (y(V) \cap x\oo \alpha (U \oo \alpha))$ são abertos de $\mathbb{R}^n$. 
+    Considere o aberto
+    \[
+        Z = \inv{x \oo \alpha} (x(U) \cap x \oo \alpha (U \oo \alpha))\cap \inv{x \oo \alpha} (y(V) \cap x\oo \alpha (U \oo \alpha)).
+    \]
+    Em particular, 
+    $  p \in x\oo \alpha (Z) \subset  W' $ e, portanto, $q \in \inv{x} \circ x \oo \alpha (Z) \subset \inv{x} (W')$, exibindo uma vizinhança de $q$ contida em $x^{-1} (W')$. 
+    De maneira análoga, obtemos que $y^{-1} (W')$ é aberto. Observe também que 
+    \[
+        \inv{y} \circ x :  x^{-1}(W') \rightarrow y^{-1} (W')
+    \]
+    é diferenciável, pois para $q \in x^{-1}(W')$ tomamos a vizinhança $x^{-1} \circ x_{\alpha} (Z) \subset x^{-1}(W')$ para a qual temos: 
+    $$
+        y^{-1} \circ x = y^{-1} \circ x_{\alpha} \circ x_{\alpha}^{-1} \circ x 
+    $$ 
+    e a expressão da direita é diferenciável em $q$. 
+    Portanto, $y^{-1} \circ x$ é diferenciável em $q$. 
+    Sendo $q$ arbitrário segue o desejado. 
+    Para mostrar que $x^{-1} \circ y$ é diferenciável é análogo. 
+    
+    Seja $\mathcal{E}'$ uma estrutura diferenciável
+    contendo $\mathcal{E}$. 
+    Dado $(\varphi, O )\in \mathcal{E}'$, devemos ter que se $W = \varphi ^{-1} (O) \cap x \oo\alpha (U \oo \alpha )\neq \emptyset $ e $\inv{x\oo \alpha}(W)$ e $\inv{\varphi} (W)$ são abertos e tanto $\varphi^{-1} \circ x $ e $\inv{x} \circ \varphi$ são diferenciáveis. 
+    Por definição, $(\varphi , O) \in \mathcal{E}\oo {M}$.
+    Portanto, $\mathcal{E}' \subset \mathcal{E}\oo M$, o que prova que $\mathcal{E}_M$ é maximal, pois nenhuma outra estrutura diferenciável em $M$ contendo $\mathcal{E}$ contém propriamente a estrutura $\mathcal{E}_M$.
+    
+    Por fim, se $\mathcal{D}$ é uma estrutura diferenciável maximal em $M$ contendo $\mathcal{E}$, então como vimos anteriormente, $\mathcal{D} \subset \mathcal{E}_M$, o que nos garante que $\mathcal{D} = \mathcal{E}_M$, visto que $\mathcal{D}$ é maximal.
+    
+
+\end{dem}
+
+\begin{exer}
+    Suponha que $\mathcal{E}$ é uma estrutura diferenciável em $M$ com estrutura diferenciável maximal $\mathcal{E} \oo M$.
+     Mostre que $Q \subset M$ é aberto em $(M, \mathcal{E})$ se, e somente se, $Q$ for aberto em $(M, \mathcal{E}\oo {M})$. 
+     Conclua que se $\mathcal{E}\oo 1$ e $\mathcal{E}  \oo 2$ são duas estruturas diferenciáveis em $M$, com a mesma estrutura diferenciável maximal $\mathcal{E}\oo M$, então $\tau \oo 1  =  \tau \oo 2$ em que $\tau \oo 1$ é a topologia de $(M, \mathcal{E} \oo 1)$ e $\tau \oo 2$ é a topologia de $(M, \mathcal{E}\oo 2)$.
+\end{exer}
+
+\begin{dem}
+    Suponha que $Q$ é aberto em $(M, \mathcal{E} \oo M)$. 
+    Então, para todo $(U , x)\in \mathcal{E} \oo M$ vale que $ \inv{x} (Q \cap x(U)) $ é aberto. 
+    Em particular, para todo $x \oo \alpha \in \mathcal{E} \subset  \mathcal{E} \oo M$, temos $x \oo \alpha^{-1} (Q \cap x \oo \alpha (U \oo \alpha ))$ é aberto. 
+    Reciprocamente, suponha que $x\oo \alpha ^{-1} (Q \cap x \oo \alpha (U \oo \alpha) )$ seja aberto, para todo $x \oo \alpha \in \mathcal{E}$. 
+    Seja $q  \in x  ^{-1} (Q \cap x (U ) ) $ com $x \in \mathcal{E}\oo M$. 
+    Seja $x \oo \alpha \in \mathcal{E}$ tal que $x(q) \in x \oo \alpha (U \oo \alpha )$. 
+    Notemos que $x_{\alpha} (U _\alpha)$ é um aberto de $(M, \mathcal{E})$, bem como $Q$ o é. 
+    Além disso, $x (U)$ é aberto em $(M, \mathcal{E} _M)$ e, portanto, pelo que mostramos anteriormente, temos que $x(U)$ é aberto em $(M, \mathcal{E})$. 
+    Com isso, o conjunto $x(U) \cap x _ \alpha (U _\alpha) \cap Q$ é um aberto de $(M, \mathcal{E})$. 
+    Temos também que 
+    $$
+        x ^{-1} \circ x _\alpha : x_ \alpha ^{-1} (x(U) \cap x_ \alpha (U_\alpha)) \rightarrow x^{-1} (x(U) \cap x_ \alpha (U_\alpha)) 
+    $$
+    é um difeomorfismo. 
+    Portanto, $( x ^{-1} \circ x _\alpha) (x _{\alpha}^{-1} (x(U) \cap x_ \alpha (U_\alpha) \cap Q))$ é um aberto contido em $x^{-1 } (X(U) \cap Q)$. 
+    Além disso, $q \in (x ^{-1} \circ x _\alpha )(x _\alpha ^{-1} (x(U) \cap x_ \alpha (U_\alpha) \cap Q))$. 
+    Concluímos então que $Q$ é aberto em $(M, \mathcal{E}_M)$.
+    
+\end{dem}
+
+
+
+
+
+\end{document}
+

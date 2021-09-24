@@ -1,0 +1,274 @@
+\documentclass[twoside,openright,titlepage,numbers=noenddot,headinclude,  lineheaders footinclude=true,cleardoublepage=empty,BCOR=5mm,paper=a4,fontsize=12pt ]{scrbook} 
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[unicode]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[eulerchapternumbers,beramono]{classicthesis} 
+\usepackage{graphicx}
+\usepackage[brazil,portuguese, english]{babel}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{amsmath,pict2e}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{breqn}
+\usepackage{tikz-cd}
+\usepackage{pst-node}
+\usepackage{pdfpages}
+\usepackage{makeidx}
+\usepackage{blindtext}
+\usepackage[intoc, portuguese]{nomencl}
+\usepackage{nomencl}
+\usepackage[T1]{fontenc}
+
+
+\addtolength{\headsep}{0.6cm}
+\setlength{\textheight}{22.7cm}
+\setlength{\textwidth}{16.2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+\linespread{1.3}
+
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{prop}[teo]{Proposição}
+\newtheorem{afirm}[teo]{Afirmação}
+\newtheorem{cor}[teo]{Corolário}
+\newtheorem{defin}[teo]{Definição}
+\newtheorem{obs}[teo]{Observação}
+\newtheorem{exemplo}[teo]{Exemplo}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\RN}{\mathbb R^n}
+\newcommand{\RM}{\mathbb R^m}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\K}{\mathbb K}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cqd}{\begin{flushright}$_\blacksquare$\end{flushright}}
+\newcommand{\ck}{\mc{C}^k}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\gl}{\mathfrak {gl}}
+\newcommand{\Ad}{\hbox{Ad}}
+\newcommand{\ad}{\hbox{ad}}
+\newcommand{\e}{\mathfrak e}
+\newcommand{\uu}{\mathfrak{u}}
+\makeatletter
+\newcommand{\bigcomp}{%
+  \DOTSB
+  \mathop{\vphantom{\sum}\mathpalette\bigcomp@\relax}%
+  \slimits@
+}
+\newcommand{\bigcomp@}[2]{%
+  \begingroup\m@th
+  \sbox\z@{$#1\sum$}%
+  \setlength{\unitlength}{0.9\dimexpr\ht\z@+\dp\z@}%
+  \vcenter{\hbox{%
+    \begin{picture}(1,1)
+    \bigcomp@linethickness{#1}
+    \put(0.5,0.5){\circle{1}}
+    \end{picture}%
+  }}%
+  \endgroup
+}
+\newcommand{\bigcomp@linethickness}[1]{%
+  \linethickness{%
+      \ifx#1\displaystyle 2\fontdimen8\textfont\else
+      \ifx#1\textstyle 1.65\fontdimen8\textfont\else
+      \ifx#1\scriptstyle 1.65\fontdimen8\scriptfont\else
+      1.65\fontdimen8\scriptscriptfont\fi\fi\fi 3
+  }%
+}
+
+\makeatother
+\title{Lista 2 Riemanniana}
+\author{}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\textbf{Exercício 1}: Sejam $M^m$ e $N^n$ variedades diferenciáveis e sejam $\lbrace (U_{\alpha}, x_{\alpha}) \rbrace$, $\lbrace (V_{\beta}, y_{\beta}) \rbrace$ estruturas diferenciáveis de $M$ e $N$, respectivamente. Considere o produto cartesiano $M \times N$ e as aplicações $z_{\alpha \beta} (p, q) = (x_{\alpha}(p), y_{\beta}(p))$, $p \in U_{\alpha}$, $q \in V_{\beta}$.
+
+Mostre que $\lbrace (U_{\alpha} \times V_{\beta}, z_{\alpha \beta}) \rbrace$ é uma estrutura diferenciável em $M \times N$, na qual as projeções $\pi _1 : M \times N \rightarrow M$ e $\pi _2 : M \times N \rightarrow N$ são diferenciáveis. Com esta estrutura, $M \times N$ é chamada variedade produto de $M$ por $N$.
+
+\noindent\textit{Dem:} Primeiramente, como cada $x_{\alpha}$ e cada $y_{\beta}$ são injetoras, segue que $z_{\alpha \beta}$ é injetora para todos $\alpha, \beta$. Além disso, 
+\begin{enumerate}
+\item Seja $(r, s) \in M \times N$. Então $r \in M$ e $s \in N$. 
+Como $\lbrace (U_{\alpha}, x_{\alpha}) \rbrace$ e $\lbrace (V_{\beta}, y_{\beta}) \rbrace$ são estruturas diferenciáveis em $M$ e $N$, respectivamente, segue que existem
+\begin{center}
+    $x_{\alpha _0} : U_{\alpha _0} \rightarrow M$ \ \ e \ \ $y_{\beta _0} : V_{\beta _0} \rightarrow N $ 
+\end{center}
+de forma que $r \in x_{\alpha _0} (U_{\alpha _0})$ e $s \in y_{\beta _0} (V_{\beta _0})$.
+Sendo assim, $(r, s) \in z_{\alpha _0 \beta _0}(U_{\alpha _0} \times V_{\beta _0})$. 
+Logo, 
+$$ \bigcup _{\alpha, \beta} z_{\alpha \beta} (U_{\alpha} \times V_{\beta}) = M \times N .$$
+
+\item Sejam $\alpha _1 \beta _1, \alpha _2 \beta _2$ tais que 
+$$ z_{\alpha _1 \beta _1}(U_{\alpha _1} \times V_{\beta _1}) \cap z_{\alpha _2 \beta _2} (U_{\alpha _2} \times V_{\beta _2}) \neq \emptyset .$$
+Assim, 
+$$ \left( x_{\alpha _1} (U_{\alpha _1}) \times y_{\beta _1} (V_{\beta _1}) \right) \cap \left( x_{\alpha _2} (U_{\alpha _2}) \times y_{\beta _2} (V_{\beta _2}) \right) \neq \emptyset ,$$
+ou ainda, 
+$$ W : = \left( x_{\alpha _1} (U _{\alpha _1}) \cap x_{\alpha _2} (U_{\alpha _2}) \right) \times \left( y_{\beta _1}(V_{\beta _1}) \cap y_{\beta _2}(V_{\beta _2}) \right) \neq \emptyset .$$
+Daí, $$ z_{\alpha _1 \beta _1}^{-1}(W) = x_{\alpha _1}^{-1}(x_{\alpha _1} (U _{\alpha _1}) \cap x_{\alpha _2} (U_{\alpha _2})) \times y_{\beta _1}^{-1}(y_{\beta _1}(V_{\beta _1}) \cap y_{\beta _2}(V_{\beta _2})) $$
+é aberto em $\R ^m \times \R ^n$, já que 
+\begin{center}
+    $x_{\alpha _1}^{-1}(x_{\alpha _1} (U _{\alpha _1}) \cap x_{\alpha _2} (U_{\alpha _2}))$ \ e \ $ y_{\beta _1}^{-1}(y_{\beta _1}(V_{\beta _1}) \cap y_{\beta _2}(V_{\beta _2})) $
+\end{center}
+são abertos em $\R ^m$ e $\R ^n$, respectivamente.
+
+De modo análogo provamos que $z_{\alpha _2 \beta _2} ^{-1}(W)$ é aberto em $\R ^m \times \R ^n$.
+
+Por fim, 
+$$ z_{\alpha _1 \beta _1}^{-1} \circ z_{\alpha _2 \beta _2} : z_{\alpha _2 \beta _2} ^{-1}(W) \rightarrow z_{\alpha _1 \beta _1}^{-1}(W) $$ 
+é dada por 
+$$ (z_{\alpha _1 \beta _1}^{-1} \circ z_{\alpha _2 \beta _2})(p, q) = (x_{\alpha _1}^{-1} (x_{\alpha _2} (p)), y_{\beta _1}^{-1} (y_{\beta _2}(q))) $$
+a qual é diferenciável, pois $x_{\alpha _1}^{-1} \circ x_{\alpha _2}$ e $y_{\beta _1}^{-1} \circ y _{\beta _2}$ são diferenciáveis.
+\end{enumerate}
+
+Dos itens $1$ e $2$ segue que $ \lbrace (U _{\alpha} \times V _{\beta}, z _{\alpha \beta}) \rbrace$ é uma estrutura diferenciável em $M \times N$.
+
+Mostremos agora que as projeções são diferenciáveis.
+
+Seja $(r,s) \in M \times N$. Tome $x_{\alpha} : U_{\alpha} \rightarrow M$ uma parametrização de $M$ em $r$ e $y_{\beta} : V_{\beta} \rightarrow N$ uma parametrização de $N$ em $s$. 
+Assim, $$ \pi _1(z_{\alpha \beta} (U_{\alpha} \times V_{\beta})) = x_{\alpha}(U _{\alpha}) \subset x_{\alpha}(U _{\alpha})  $$ 
+e $x_{\alpha} ^{-1} \circ \pi _1 \circ z_{\alpha \beta} : U_{\alpha} \times V_{\beta} \rightarrow U_{\alpha}$ é dada por 
+$$ (x_{\alpha} ^{-1} \circ \pi _1 \circ z_{\alpha \beta})(p, q) = x_{\alpha}^{-1} (x_{\alpha} (p)) = p ,$$
+a qual é diferenciável. 
+Portanto, $\pi _1$ é diferenciável.
+
+De modo análogo mostramos que $\pi _2$ é diferenciável. \QEDA
+
+\newpage
+
+\noindent\textbf{Exercício 2}: Prove que se $M^m$ e $N^n$ são variedades diferenciáveis, então $T(M \times N)$ é difeomorfo a $TM \times TN$.
+
+\noindent\textit{Dem:} Em primeiro lugar, fixe $(p,q) \in M \times N$ e considere as aplicações 
+\begin{eqnarray*}
+    \iota_M: M \longrightarrow M \times N,\\
+    \iota_N: N \longrightarrow M \times N,
+\end{eqnarray*}
+dadas por $\iota_M(r) = (r,q)$ e $\iota_N(s) = (p,s)$. Mostremos que $\iota_M$ e $\iota_N$ são diferenciáveis. Para $\iota_M$, dado $r \in M$, seja $x \times y: U \times V \subset \R^n \times \R^m \longrightarrow M \times N$ parametrização de $M \times N$ em $(r,q) \in M \times N$ da forma 
+\begin{equation*}
+    x \times y(u,v) = (x(u),y(v))
+\end{equation*}
+onde $x: U \longrightarrow M$ e $y: V \longrightarrow N$ são respectivamente parametrizações de $M$ em $r$ e de $N$  em $q$ respectivamente.
+
+Tomando $x: U \longrightarrow M$ parametrização de $M$ em $r$, temos 
+\begin{equation*}
+    \iota_M(x(U)) = x(U) \times \{q\} \subset x(U) \times y(V).
+\end{equation*}
+e 
+\begin{eqnarray*}
+    \left( (x\times y)^{-1} \circ \iota_M \circ x\right)(u) &=& (x\times y)^{-1} \circ \iota_M(x(u))\\
+    &=&(x\times y)^{-1}(x(u),q)\\
+    &=&\left(x^{-1}(x(u)),y^{-1}(q)\right)\\
+    &=&\left(u,y^{-1}(q)\right)
+\end{eqnarray*}
+que claramente é uma função diferenciável, para todo $u \in U$. Logo $\iota_M$ é diferenciável. O raciocínio é análogo para $\iota_N$. 
+
+Agora, afirmamos que $T_{(p,q)}M \times N$ é isomorfo a $T_pM \times T_q N$. Considere a aplicação
+\begin{equation*}
+    \begin{array}{ccccc}
+        f:& T_{(p,q)} M \times N &\longrightarrow &T_p M \times T_q N\\
+        &v & \longmapsto &\left(d(\pi_M)_{(p,q)}(v),d(\pi_N)_{(p,q)}(v)\right)
+    \end{array}
+\end{equation*}
+
+É simples verificar que $f$ é linear, visto que as diferenciais são lineares e está bem definida. Para mostrarmos que $f$ é o isomorfismo afirmado, considere a função $g:T_p M \times T_q N \longrightarrow T_{(p,q)}M \times N$ dada por 
+\begin{equation*}
+    g(u,v) = d(\iota_M)_p(u) + d(\iota_N)_q(v). 
+\end{equation*}
+
+Então $g$ é linear, pois é a soma de duas aplicações lineares.
+
+Em particular, as funções $\pi_M \circ \iota_M: N \longrightarrow M$ e $\pi_M \longrightarrow N$ são constantes. Dados $x \in M$ e $y \in N$, temos 
+ \begin{eqnarray*}
+     \pi_M \circ \iota_N(y) = \pi_M(p,y) &=& p\\
+     \pi_N \circ \iota_M(x) = \pi_N(x,q) &=& q
+ \end{eqnarray*}
+ 
+Portanto 
+\begin{eqnarray*}
+    d(\pi_M \circ \iota_N)_y \equiv 0\\
+    d(\pi_N \circ \iota_M)_x \equiv 0.
+\end{eqnarray*}
+para todo $(x,y) \in M \times N$. Afirmamos que $g$ é a inversa à direita de $f$. Com efeito, basta notar que 
+\begin{eqnarray*}
+     f \circ g(u,v) &=& f(d(\iota_M)_p(u) + d(\iota_N)_q(v))\\
+     &=&\left(d(\pi_M)_{(p, q)}(d(\iota_M)_p(u) + d(\iota_N)_q(v)),d(\pi_N)_{(p, q)}(d(\iota_M)_p(u) + d(\iota_N)_q(v))\right)\\
+     &=&\left(d(\pi_M \circ \iota_M)_p(u) + d(\pi_M \circ \iota_N)_q(v),d(\pi_N \circ \iota_M)_p(u) + d(\pi_N \circ \iota_N)_q(v)\right)\\
+     &=&\left(d(\pi_M \circ \iota_M)_p(u), d(\pi_N \circ \iota_N)_q(v)\right)
+\end{eqnarray*}
+ 
+As funções $\pi_M \circ \iota_M: M \longrightarrow M$ e $\pi_M \circ \iota_N: N \longrightarrow N$ são respectivamente dadas por 
+\begin{eqnarray*}
+    \pi_M \circ \iota_M(x) = \pi_M(x,q) = x\\
+    \pi_N \circ \iota_N(y) = \pi_N(p,y) = y
+\end{eqnarray*}
+isto é, $\pi_M \circ \iota_M = Id_M$ e $\pi_N \circ \iota_N = Id_N$. Assim $d(\pi_M \circ \iota_M)_p = Id_{T_pM}$ e $d(\pi_N \circ \iota_N)_q = Id_{T_q N}$.
+
+Logo
+\begin{equation*}
+    f \circ g(u,v) = \left(d(\pi_M \circ \iota_M)_p(u), d(\pi_N \circ \iota_N)_q(v)\right) = (u,v).
+\end{equation*}
+
+Portanto $f$ admite uma inversa à direita. Com isso, $f$ é sobrejetora. Como $\hbox{dim}T_{(p,q)} (M \times N) = \hbox{dim}(T_pM \times T_q N)$, segue do teorema do núcleo e da imagem que $\hbox{dim}(\hbox{ker}f) = 0$ e, com isso, $f$ é isomorfismo. 
+
+Usando esse fato, provaremos que $T (M \times N)$ é difeomorfo a $TM \times TN$. Identificando $T_{(p,q)} M \times N \simeq T_p M \times T_q N$ para todo par $(p,q) \in M \times N$, defina a função 
+\begin{equation*}
+    \begin{array}{cccc}
+        \Phi:& T (M \times N) &\longrightarrow & TM \times TN\\
+            &((p,q),(u,v)) & \mapsto & ((p,u),(q,v)).
+    \end{array}
+\end{equation*}
+
+ Em primeiro lugar, tomando $\varphi: TM \times TN \longrightarrow T (M\times N)$ dada por $\varphi((p,u),(q,v)) = ((p,q),(u,v))$, temos 
+ \begin{eqnarray*}
+     \varphi \circ \Phi((p,q),(u,v)) = \varphi((p,u),(q,v)) = ((p,q),(u,v))\\
+     \Phi \circ \varphi((p,u),(q,v)) = \varphi((p,q),(u,v)) = ((p,u),(q,v))
+ \end{eqnarray*}
+ 
+Assim $\varphi = \Phi^{-1}$. Para mostrar que $\Phi$ é difeomorfismo, dados $((x,y),(u,v)) \in T(M \times N)$, seja 
+\begin{equation*}
+     \mathcal{E}_1 = \{(U_{\alpha} \times V_{\beta} \times \R^m \times \R^n, \varphi_{\alpha \beta})\}_{\alpha, \beta}
+\end{equation*}
+estrutura diferenciável de $T (M \times N)$ onde 
+\begin{equation*}
+    \mathcal{E}_M = \{(U_{\alpha},x_{\alpha})\}_{\alpha} \ \ \hbox{ e } \ \  \mathcal{E}_N = \{(V_{\beta},y_{\beta})\}_{\beta}
+\end{equation*}
+são estruturas diferenciáveis de $M$ e $N$ respectivamente e 
+\begin{equation*}
+    \varphi_{\alpha \beta}((x,y),(v_1,v_2)) = \left((x_{\alpha}(x),y_{\beta}(y)), \left(\sum_{j=1}^m v_j^1 \frac{\partial}{\partial x_{\alpha}^j},\sum_{j=1}^n v_j^2 \frac{\partial}{\partial y_{\beta}^j}\right)\right) .
+\end{equation*}
+
+Em $TM \times TN$, considere a estrutura 
+\begin{equation*}
+    \mathcal{E}_2 = \{((U_{\alpha} \times \R^n) \times( V_{\beta} \times \R^n), \Phi_{\alpha \beta})\},
+\end{equation*}
+onde 
+\begin{equation*}
+    \Phi_{\alpha \beta}((p,u),(q,v)) = \left(\left(x_{\alpha}(p),\sum_{j=1}^m u_j \frac{\partial}{\partial x_{\alpha}^j}\right),\left(y_{\beta}(q), \sum_{j=1}^n v_j \frac{\partial}{\partial y_{\beta}^j}\right)\right)
+\end{equation*}
+
+Em coordenadas, considerando $v_1 = (v^1_1,...,v^1_m) \in \R^m$ e $v_2 = (v_1^2,...,v_n^2) \in \R^n$, a função $\Phi$ é dada por 
+\begin{eqnarray*}
+    (\Phi_{\alpha \beta}^{-1} \circ \Phi \circ \varphi_{\alpha \beta})((x,y),(v_1,v_2)) &=& \Phi_{\alpha \beta}^{-1} \circ \Phi\left((x_{\alpha}(x),y_{\beta}(y)),\left(\sum_{j=1}^m v_j^1 \frac{\partial}{\partial x_{\alpha}^j}, \sum_{j=1}^n v_j^2 \frac{\partial}{\partial y_{\beta}^j}\right)\right)\\
+    &=&\Phi^{-1}_{\alpha \beta}\left(\left(x_{\alpha}(x),\sum_{j=1}^m v_j^1 \frac{\partial}{\partial x_{\alpha}^j}\right), \left(y_{\beta}(y), \sum_{j=1}^n v_j^2 \frac{\partial}{\partial y_{\beta}^j}\right)\right)\\
+    &=&\left(\left(x^{-1}_{\alpha}(x_{\alpha}(x)),\sum_{j=1}^n v^1_j e_j\right), \left(y^{-1}_{\beta}(y_{\beta}(y)),\sum_{j=1}^n v^2_j e'_j\right)\right)\\
+    &=&((x,v_1),(y,v_2))
+\end{eqnarray*}
+que claramente é uma função diferenciável, onde $\{e_1,...,e_m\}$ e $\{e'_1,...,e'_n\}$ são as bases canônicas de $\R^m$ e $\R^n$, respectivamente. O raciocínio é análogo para a função $\Phi^{-1}$. Portanto $\Phi$ e $\Phi^{-1}$ são diferenciáveis e, com isso, $\Phi$ é um difeomorfismo. \QEDA
+
+
+
+\end{document}

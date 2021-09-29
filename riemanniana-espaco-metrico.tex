@@ -1,0 +1,124 @@
+\documentclass{article}[11pt]
+
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{stackrel}
+\usepackage{ulem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observa\c c\~ao}
+\newtheorem{exercicio}[theorem]{Exerc\'\i cio}
+
+%\addtolength{\topmargin}{-2cm}
+%\addtolength{\textheight}{15cm}
+
+\DeclareMathOperator{\sen}{sen}
+
+\begin{document}
+
+\section{Variedades Riemannianas são espaços métricos}
+
+\
+
+\begin{observation}
+Procurou-se seguir as notações do livro de geometria Riemanniana do Manfredo do Carmo.
+Lembre-se que diferenciável significa de classe $C^\infty$.
+\end{observation}
+
+Seja $(M,g)$ uma variedade Riemanniana conexa.
+O comprimento de uma curva diferenciável por partes $c : [a,b] \rightarrow M$ é dada por
+\[
+\ell(c) = \int_a^b \left< \gamma^\prime(t), \gamma^\prime(t)\right>^{1/2}.dt,
+\]
+onde $\left< \cdot, \cdot\right>$ denota a métrica Riemanniana $g$. 
+Neste caso, dizemos que $c$ liga $c(a)$ a $c(b)$.
+Denotaremos a família de caminhos diferenciáveis por partes em $M$ que ligam $p$ a $q$ por $\mathcal A_{p,q}(M)$. 
+
+\begin{exercicio}
+\label{reparametrizacao}
+Seja $\tilde t:[\tilde a, \tilde b] \rightarrow [a,b]$ um homeomorfismo diferenciável por partes.
+Prove que $c\circ \tilde t$ é diferenciável por partes e que $\ell(c) = \ell(c \circ \tilde t)$. 
+\end{exercicio}
+
+O homeomorfismo acima pode ser tanto estritamente crescente como estritamente decrescente.
+
+Seja $\iota:[a,b] \rightarrow [a,b]$ a única função afim tal que $\iota(a) = b$ e $\iota(b) = a$.
+A reversa de $c \in \mathcal A_{p,q}(M)$ é a curva $\bar c = c \circ \iota \in A_{q,p}(M)$.
+Pelo exercício \ref{reparametrizacao}, temos que $\ell_g(c) = \ell_g(\bar c)$.
+
+Se $p,q \in M$, a distância entre $p$ e $q$ é definida por
+\[
+d(p,q)=\inf_{c\in \mathcal A_{p,q}(M)} \ell(c).
+\]
+Mostremos que $d$ é uma métrica em $M$, cuja topologia coincide com a topologia original de $M$.
+
+É imediato que $d\geq 0$.
+
+\begin{exercicio}
+Use a igualdade $\ell(c) = \ell(\bar c)$ e mostre que $d(p,q) = d(q,p)$ para todo $p,q \in M$.
+\end{exercicio}
+
+Sejam $c_1\in \mathcal A_{p_1,p_2}(M)$ e $c_2 \in \mathcal A_{p_2,p_3}(M)$.
+Reparametrize $c_1$ e $c_2$ definido-os nos intervalos $[0,1/2]$ e $[1/2,1]$ respectivamente e seja $c_3$ a concatenação de $c_1$ e $c_2$.
+Observe que 
+\[
+\ell(c_3) = \ell(c_1) + \ell(c_2).
+\]
+
+\begin{exercicio}
+Mostre que $d(p,q) \leq d(p,r) + d(r,q)$ para todo $p,q,r \in M$.
+\end{exercicio}
+
+Sejam $p,q\in M$ pontos distintos. 
+Para mostrarmos que $d(p,q)>0$, vamos comparar $g$ com uma métrica Euclidiana $h$ em sistema de coordenadas, a qual denotaremos por $(\cdot,\cdot)$.
+
+Seja $\mathbf x: U \rightarrow M$ uma parametrização em $p$ tal que $\mathbf x(0)=p$.
+Denote a métrica Euclidiana em $U$ por $h=(h_{ij})=(\delta_{ij})$.
+Seja $B = B_h(0,\varepsilon) \subset U$ uma bola Euclidiana em $U$ tal que $\bar B_h(0,\varepsilon) \subset U$ e considere o fibrado tangente unitário 
+\[
+SB = \{(x,y);x \in TB;\sqrt{( y,y)} = 1 \}.
+\]
+$SB$ tem fecho compacto em $TU$. Com isso
+\[
+L := \inf_{(x,y) \in SB} \sqrt{\left< y,y\right>} > 0
+\]
+e
+\[
+\sqrt{\left< y,y\right>} \geq L \sqrt{\left(y,y \right)}.
+\]
+Portanto, todo caminho $c$ que liga $p$ a um ponto fora de $B$ satisfaz $\ell(c) \geq L\varepsilon$.
+
+\begin{exercicio}
+Conclua que $d(p,q)>0$ se $p\neq q$. 
+Logo $d$ é uma métrica em $M$.
+\end{exercicio}
+
+\begin{exercicio}
+Mostre que a topologia $\mathcal T_d$ gerada pela métrica $d$ coincide com a topologia original $\mathcal T_M$ de $M$.
+
+Sugestão: Conservando a notação acima, note que $\mathcal T_M$ é gerada por 
+\[
+\left\{ \mathbf x(B_h(0,\varepsilon)), \mathbf x \text{ parametriza\c c\~ao de M, }\varepsilon > 0 \right\}.
+\] 
+Mas sempre existe uma bola $B_d(p,\eta) \subset M$ tal que $B_d(p,\eta) \subset \mathbf x(B_h(0,\varepsilon))$.
+Portanto $\mathcal T_M \subset \mathcal T_d$.
+Para a outra inclusão, defina
+\[
+H := \sup_{(x,y) \in SB} \sqrt{\left< y,y\right>} > 0,
+\]
+e note que $\sqrt{\left< y,y\right>} \leq H \sqrt{( y,y)}$ se $(x,y) \in TB$. 
+Conclua que as duas topologias coincidem.
+
+\end{exercicio}
+
+\end{document}

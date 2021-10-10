@@ -1,0 +1,230 @@
+\documentclass[twoside,openright,titlepage,numbers=noenddot,headinclude,  lineheaders footinclude=true,cleardoublepage=empty,BCOR=5mm,paper=a4,fontsize=12pt ]{scrbook} 
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[unicode]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[eulerchapternumbers,beramono]{classicthesis} 
+\usepackage{graphicx}
+\usepackage[brazil,portuguese, english]{babel}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{amsmath,pict2e}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{breqn}
+\usepackage{tikz-cd}
+\usepackage{pst-node}
+\usepackage{pdfpages}
+\usepackage{makeidx}
+\usepackage{blindtext}
+\usepackage[intoc, portuguese]{nomencl}
+\usepackage{nomencl}
+\usepackage[T1]{fontenc}
+
+
+\addtolength{\headsep}{0.6cm}
+\setlength{\textheight}{22.7cm}
+\setlength{\textwidth}{16.2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+\linespread{1.3}
+
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{prop}[teo]{Proposição}
+\newtheorem{afirm}[teo]{Afirmação}
+\newtheorem{cor}[teo]{Corolário}
+\newtheorem{defin}[teo]{Definição}
+\newtheorem{obs}[teo]{Observação}
+\newtheorem{exemplo}[teo]{Exemplo}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\RN}{\mathbb R^n}
+\newcommand{\RM}{\mathbb R^m}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\K}{\mathbb K}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cqd}{\begin{flushright}$_\blacksquare$\end{flushright}}
+\newcommand{\ck}{\mc{C}^k}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\gl}{\mathfrak {gl}}
+\newcommand{\Ad}{\hbox{Ad}}
+\newcommand{\ad}{\hbox{ad}}
+\newcommand{\e}{\mathfrak e}
+\newcommand{\uu}{\mathfrak{u}}
+\makeatletter
+\newcommand{\bigcomp}{%
+  \DOTSB
+  \mathop{\vphantom{\sum}\mathpalette\bigcomp@\relax}%
+  \slimits@
+}
+\newcommand{\bigcomp@}[2]{%
+  \begingroup\m@th
+  \sbox\z@{$#1\sum$}%
+  \setlength{\unitlength}{0.9\dimexpr\ht\z@+\dp\z@}%
+  \vcenter{\hbox{%
+    \begin{picture}(1,1)
+    \bigcomp@linethickness{#1}
+    \put(0.5,0.5){\circle{1}}
+    \end{picture}%
+  }}%
+  \endgroup
+}
+\newcommand{\bigcomp@linethickness}[1]{%
+  \linethickness{%
+      \ifx#1\displaystyle 2\fontdimen8\textfont\else
+      \ifx#1\textstyle 1.65\fontdimen8\textfont\else
+      \ifx#1\scriptstyle 1.65\fontdimen8\scriptfont\else
+      1.65\fontdimen8\scriptscriptfont\fi\fi\fi 3
+  }%
+}
+
+\makeatother
+\title{Lista 3 Riemanniana}
+\author{}
+\date{September 2021}
+
+\begin{document}
+
+
+\maketitle
+
+
+\textbf{Exercício 01:} 
+Considere $0 < r < s$. 
+Sejam $B(0,r), B(0,s)\subset \mathbb{R}^n$ as bolas euclidianas abertas centradas na origem com raios $r$ e $s$, respectivamente. 
+Mostre que existe uma função diferenciável $f : \mathbb{R}^n \rightarrow \mathbb{R}$ tal que $f(x) = 1$ se $x \in \overline{B}(0,r)$ e $ f(x) = 0 $ se $ x \notin B(0,s)$.
+\vspace{0.5cm}
+
+\textbf{Resolução:} 
+Seja $F: \mathbb{R} \rightarrow \mathbb{R} $ a aplicação definida por
+\[
+    F(t) = \begin{cases}
+                \text{exp}{\left(-\frac{1}{t}\right)} & \text{se } t > 0 \\
+                0  & \text{se } t \leq 0
+            \end{cases}
+\]
+Note que $ F $ é diferenciável em qualquer valor não nulo. 
+Além disso, observe que $F$ é contínua, visto que $\lim _{t \to 0} \exp{\left(-\frac{1}{t}\right)} = 0$. 
+Veja que para todo $k \in \mathbb{N}$, temos
+\[
+    \lim _{t^+ \to 0}\dfrac{\exp\left( -\frac{1}{t}\right)}{t^k} = \lim_{t^+ \to 0} \dfrac{t^{-k}}{\exp\left( \frac{1}{t}\right)}.
+\]
+Provemos por indução em $k$ que
+\begin{equation}\label{equation:eq1}
+    \lim _{t^+ \to 0}\dfrac{t^{-k}}{\exp\left( \frac{1}{t}\right)} = 0
+\end{equation}
+Se $k=0$ a condição é obvia. 
+Suponha que seja verificada para algum $k >0$. Neste caso,
+\[
+    \lim _{t^+ \to 0} \dfrac{t^{- (k+1)}}{\exp\left( \frac{1}{t}\right)} 
+    = \lim_{t^+ \to 0}   \dfrac{t^{- k - 1 }}{\exp\left( \frac{1}{t}\right)} 
+    = \lim _{t^+ \to 0}  \dfrac{(-k-1)t^{- k - 2 }}{\frac{-1}{t^2}\exp\left( \frac{1}{t}\right)}
+    =(k+1)\lim _{t^+ \to 0} \dfrac{t^{- k }}{\exp\left( \frac{1}{t}\right)}
+    =0.
+\]
+Vejamos que para $t > 0 $
+\[
+    \frac{d^k}{d^k t} F(t) 
+    = p_k (t) \dfrac{\exp\left(  -\frac{1}{t} \right)}{t^{2k}},  
+\]
+para algum polinômio $p_k$. 
+É claramente válido para $ k = 0 $, tomando $p_0(t) = 1$. Suponha válido para algum $ k \in \mathbb{N}$. 
+Note que, para $t>0$,
+\[
+    \begin{array}{rcl}
+        \frac{d^{k+1}}{d^{k+1} t} F (t) &=& \frac{d}{d t} \left(p_k (t) \dfrac{\exp\left(  -\frac{1}{t} \right)}{t^{2k}}  \right) \\
+        &=& \dfrac{p'_k (t)}{t^{2k}} \exp\left(  -\frac{1}{t} \right)  - \dfrac{p _ k(t)}{ t^{2k + 1} }\exp\left(  -\frac{1}{t} \right)  + \dfrac{p _ k(t)}{ t^{2k + 2} }\exp\left(  -\frac{1}{t} \right) \\
+        &=& (t^2 p'_ k (t) - t p _k(t) + p_k (t)) \dfrac{\exp\left(  -\frac{1}{t} \right)}{t^{2(k+1)}}\\
+        &=& p _{k+1} (t) \dfrac{\exp\left(  -\frac{1}{t} \right)}{t^{2(k+1)}}.
+    \end{array}
+\]
+Como $p _k (t)$ é um polinômio e \eqref{equation:eq1}, segue que
+\[
+    \lim _{t^+ \to 0} \frac{d^{k+1}}{d^{k+1} t} F (t) = 0,
+\]
+Mostremos que a $k$-ésima derivada à direita de $F$ em $t = 0$ coincide com a derivada à esquerda que é zero. 
+De fato,
+\[
+    \frac{d^{k+1}}{d^{k+1} t} F (0) 
+    = \lim  \dfrac{p _{k+1} (t) \dfrac{\exp\left(  -\frac{1}{t} \right)}{t^{2k} } - 0}{t} 
+    =  \lim  p _{k} (t) \dfrac{\exp\left(  -\frac{1}{t} \right)}{t^{2k+1}}  = 0.
+\]
+Portanto, $f$ é diferenciável. 
+Denote $\alpha  = \frac{s+r}{2}$. 
+Considere $h: \mathbb{R} \rightarrow [0,1]$ definida por
+\[
+    h(t) =  \dfrac{F(\alpha -t)}{F(\alpha - t ) + F(t-r)}.
+\]
+A função $h$ está bem definida. 
+De fato, inicialmente que $F(\alpha  -   t ) + F(t - r) >0$. Sabemos que $F(t)\geq 0$, para todo $t \in \mathbb{R}$ e $F(t)  = 0 $ se, e somente se, $t \leq 0$. 
+Como $\alpha  - t \leq 0$ ocorre se, e somente se, $ t\leq  \alpha  = \frac{r+s}{2} > r$, ou seja, $ t-r > 0$, segue o afirmado. Além disso,
+\[
+    0 \leq h(t)   = \dfrac{F(\alpha -t)}{F(\alpha - t ) + F(t-r)} \leq  \dfrac{F(\alpha -t)}{F(\alpha - t ) } 
+    = 1,
+\]
+o que prova que está bem definido o contradomínio. 
+Portanto, $h$ é diferenciável, $h(t) = 0$ se $t \geq \alpha $ e $h (t) = 1$, se $t \leq r $, pois neste caso $ f(t-r) = 0$. 
+Definindo $f: \mathbb{R}^n\rightarrow \mathbb{R}$ dado por $f(x) = h(|x|)$. 
+Como $h$ é constante igual a $1$ em $x \in \overline{B}(0, r) $, segue que $f$ é diferenciável na origem e a diferenciabilidade nos demais pontos é imediata. 
+Do que provamos para $h$ se $|x|\geq \alpha$, então $f(x) = h(|x|) = 0$. 
+Em particular, se $x \notin \overline{B} (0, s)$, temos $f(x) =0$, concluindo o resultado. 
+
+
+
+\vspace{2cm}
+
+\textbf{Exercício 02:} 
+Seja $M$ uma variedade diferenciável e $ K \subset O\subset M$, onde $K$ é um compacto não vazio e $O$ é aberto. 
+Mostre que existe uma função diferenciável $f:M \rightarrow \mathbb{R}$ tal que $ f(x)>0$ se $x \in K$ e $f(x) = 0$, se $ x \notin O$.
+
+\vspace{0.5cm}
+
+\textbf{Resolução:} 
+Dado $p \in K$, queremos mostrar que existe uma função suave $g_p : M \rightarrow [0, + \infty)$ tal que $g_p(p) > 0$ e $\text{supp}g_p \subset O$. 
+Seja $(\mathcal{U}, \psi : \mathcal{U}\rightarrow \R^n)$ uma carta de $M$ centrada em $p$. 
+Como $O$ é um aberto de $M$ e $K \subset O$, temos que $(\mathcal{U} \cap O , \psi : \mathcal{U} \cap O \rightarrow \R^n)$ é uma carta de $M$ centrada em $p$. 
+Assim, seja 
+\begin{equation*}
+B_s(0) = \{x \in \R^n : ||x || < s\}
+\end{equation*} 
+uma bola aberta de raio $s > 0$ tal que $\psi(p) \in B_s(0)$, o que é claro, pois $\psi(p) = 0$. 
+Tome $r > 0$ tal que $0 < r < s$, pelo \textbf{Exercício 1}, existe uma função diferenciável $f_p : \R^n \rightarrow \R$ tal que $f(x) = 1$ se $x \in \overline{B}_r(0)$ e $\text{supp}f_p \subset B_s(0)$. 
+Defina 
+\begin{align*}
+g_p : M &\rightarrow [0, + \infty) \\ 
+q &\mapsto \begin{cases}
+f_p(\psi(q)) & \text{se}\;  q \in \psi^{-1}(B_s(0)) \\
+0  & \text{caso contrário}
+\end{cases}
+\end{align*}
+
+Mostremos que $\text{supp} g_p \subset O$.
+Como $\overline{B_r(0)} = B_r[0] \subset B_s(0)$, temos que $\overline{\psi^{-1}(B_r(0))} \subset \psi^{-1}(B_s(0)) \subset O$. 
+Desde que, $g_p(q) \neq 0$, se $q \in \psi^{-1}(B_r(0))$ e $g_p(q) = 0$, se e somente se, $q \notin \psi^{-1}(B_s(0))$, ou seja, $g_p$ se anula de forma suave em $O$ e se $q \notin O$, temos que $\psi(q) \notin B_s(0)$, logo $g_p = 0$ se anula fora de $O$, pela propriedade da $f$. 
+Logo, $\text{supp} g_p \subset O$ e $g_p$ se anula de forma suave em $O$, isso mostra que $g_p$ é diferenciável.
+
+Seja $U_p \coloneqq \{q \in M : g_p(q) > 0\}$.
+Primeiro note, que $g_p(p) = f_p(\psi(p)) = 1$, pois $p \in \psi^{-1}(B_r(0))$. 
+Assim, $K \subset \cup_{ p \in K} U_p$. 
+Resta mostrar que $U_p$ é aberto para todo $p \in K$. 
+De fato, \begin{align*}
+M \setminus U_p &= \{q \in M : g_p(q) = 0\} \\ &= g_p^{-1}(\{0\}).
+\end{align*} 
+
+Como $\R$ é Hausdorff e $g_p$ 
+e diferenciável, segue que $M \setminus U_p$ é fechado. 
+Portanto, $U_p$ é aberto. 
+Logo, $\{U_p\}_{p \in K}$ é uma cobertura aberta para $K$, como $K$ é compacto, existe uma subcobertura aberta $\{U_{p_i}\}_{i = 1}^n$. 
+Defina $f : M \rightarrow [0, + \infty)$ por $f(q) = \sum_{i = 1}^n g_{p_i}(q)$.
+Claramente, $f$ está bem definida e é diferenciável pois é uma soma finita de funções diferenciáveis. 
+E pela forma que $f$ foi definida ela claramente satisfaz as condições do exercício.
+
+\end{document}

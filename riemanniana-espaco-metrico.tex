@@ -26,50 +26,50 @@
 
 \begin{document}
 
-\section{Variedades Riemannianas s„o espaÁos mÈtricos}
+\section{Variedades Riemannianas s√£o espa√ßos m√©tricos}
 
 \
 
 \begin{observation}
-Procurou-se seguir as notaÁıes do livro de geometria Riemanniana do Manfredo do Carmo.
-Lembre-se que diferenci·vel significa de classe $C^\infty$.
+Procurou-se seguir as nota√ß√µes do livro de geometria Riemanniana do Manfredo do Carmo.
+Lembre-se que diferenci√°vel significa de classe $C^\infty$.
 \end{observation}
 
 Seja $(M,g)$ uma variedade Riemanniana conexa.
-O comprimento de uma curva diferenci·vel por partes $c : [a,b] \rightarrow M$ È dada por
+O comprimento de uma curva diferenci√°vel por partes $c : [a,b] \rightarrow M$ √© dada por
 \[
-\ell(c) = \int_a^b \left< \gamma^\prime(t), \gamma^\prime(t)\right>^{1/2}.dt,
+\ell(c) = \int_a^b \left< c^\prime(t), c^\prime(t)\right>^{1/2}.dt,
 \]
-onde $\left< \cdot, \cdot\right>$ denota a mÈtrica Riemanniana $g$. 
+onde $\left< \cdot, \cdot\right>$ denota a m√©trica Riemanniana $g$. 
 Neste caso, dizemos que $c$ liga $c(a)$ a $c(b)$.
-Denotaremos a famÌlia de caminhos diferenci·veis por partes em $M$ que ligam $p$ a $q$ por $\mathcal A_{p,q}(M)$. 
+Denotaremos a fam√≠lia de caminhos diferenci√°veis por partes em $M$ que ligam $p$ a $q$ por $\mathcal A_{p,q}(M)$. 
 
 \begin{exercicio}
 \label{reparametrizacao}
-Seja $\tilde t:[\tilde a, \tilde b] \rightarrow [a,b]$ um homeomorfismo diferenci·vel por partes.
-Prove que $c\circ \tilde t$ È diferenci·vel por partes e que $\ell(c) = \ell(c \circ \tilde t)$. 
+Seja $\tilde t:[\tilde a, \tilde b] \rightarrow [a,b]$ um homeomorfismo diferenci√°vel por partes.
+Prove que $c\circ \tilde t$ √© diferenci√°vel por partes e que $\ell(c) = \ell(c \circ \tilde t)$. 
 \end{exercicio}
 
 O homeomorfismo acima pode ser tanto estritamente crescente como estritamente decrescente.
 
-Seja $\iota:[a,b] \rightarrow [a,b]$ a ˙nica funÁ„o afim tal que $\iota(a) = b$ e $\iota(b) = a$.
-A reversa de $c \in \mathcal A_{p,q}(M)$ È a curva $\bar c = c \circ \iota \in A_{q,p}(M)$.
-Pelo exercÌcio \ref{reparametrizacao}, temos que $\ell_g(c) = \ell_g(\bar c)$.
+Seja $\iota:[a,b] \rightarrow [a,b]$ a √∫nica fun√ß√£o afim tal que $\iota(a) = b$ e $\iota(b) = a$.
+A reversa de $c \in \mathcal A_{p,q}(M)$ √© a curva $\bar c = c \circ \iota \in A_{q,p}(M)$.
+Pelo exerc√≠cio \ref{reparametrizacao}, temos que $\ell_g(c) = \ell_g(\bar c)$.
 
-Se $p,q \in M$, a dist‚ncia entre $p$ e $q$ È definida por
+Se $p,q \in M$, a dist√¢ncia entre $p$ e $q$ √© definida por
 \[
 d(p,q)=\inf_{c\in \mathcal A_{p,q}(M)} \ell(c).
 \]
-Mostremos que $d$ È uma mÈtrica em $M$, cuja topologia coincide com a topologia original de $M$.
+Mostremos que $d$ √© uma m√©trica em $M$, cuja topologia coincide com a topologia original de $M$.
 
-… imediato que $d\geq 0$.
+√â imediato que $d\geq 0$.
 
 \begin{exercicio}
 Use a igualdade $\ell(c) = \ell(\bar c)$ e mostre que $d(p,q) = d(q,p)$ para todo $p,q \in M$.
 \end{exercicio}
 
 Sejam $c_1\in \mathcal A_{p_1,p_2}(M)$ e $c_2 \in \mathcal A_{p_2,p_3}(M)$.
-Reparametrize $c_1$ e $c_2$ definido-os nos intervalos $[0,1/2]$ e $[1/2,1]$ respectivamente e seja $c_3$ a concatenaÁ„o de $c_1$ e $c_2$.
+Reparametrize $c_1$ e $c_2$ definido-os nos intervalos $[0,1/2]$ e $[1/2,1]$ respectivamente e seja $c_3$ a concatena√ß√£o de $c_1$ e $c_2$.
 Observe que 
 \[
 \ell(c_3) = \ell(c_1) + \ell(c_2).
@@ -80,39 +80,40 @@ Mostre que $d(p,q) \leq d(p,r) + d(r,q)$ para todo $p,q,r \in M$.
 \end{exercicio}
 
 Sejam $p,q\in M$ pontos distintos. 
-Para mostrarmos que $d(p,q)>0$, vamos comparar $g$ com uma mÈtrica Euclidiana $h$ em sistema de coordenadas, a qual denotaremos por $(\cdot,\cdot)$.
+Para mostrarmos que $d(p,q)>0$, vamos comparar $g$ com uma m√©trica Euclidiana $h$ em sistema de coordenadas, a qual denotaremos por $(\cdot,\cdot)$.
 
-Seja $\mathbf x: U \rightarrow M$ uma parametrizaÁ„o em $p$ tal que $\mathbf x(0)=p$.
-Denote a mÈtrica Euclidiana em $U$ por $h=(h_{ij})=(\delta_{ij})$.
-Seja $B = B_h(0,\varepsilon) \subset U$ uma bola Euclidiana em $U$ tal que $\bar B_h(0,\varepsilon) \subset U$ e considere o fibrado tangente unit·rio 
+Seja $\mathbf x: U \rightarrow M$ uma parametriza√ß√£o em $p$ tal que $\mathbf x(0)=p$.
+Denote a m√©trica Euclidiana em $U$ por $h=(h_{ij})=(\delta_{ij})$.
+Seja $B = B_h(0,\varepsilon) \subset U$ uma bola Euclidiana em $U$ tal que $\bar B_h(0,\varepsilon) \subset U$ e considere o fibrado tangente unit√°rio 
 \[
-SB = \{(x,y);x \in TB;\sqrt{( y,y)} = 1 \}.
+SB = \{(x,y);x \in B;\sqrt{( y,y)} = 1 \}.
 \]
 $SB$ tem fecho compacto em $TU$. Com isso
 \[
 L := \inf_{(x,y) \in SB} \sqrt{\left< y,y\right>} > 0
 \]
 e
-\[
+\begin{equation}
+\label{d mais fina}
 \sqrt{\left< y,y\right>} \geq L \sqrt{\left(y,y \right)}.
-\]
+\end{equation}
 Portanto, todo caminho $c$ que liga $p$ a um ponto fora de $B$ satisfaz $\ell(c) \geq L\varepsilon$.
 
 \begin{exercicio}
 Conclua que $d(p,q)>0$ se $p\neq q$. 
-Logo $d$ È uma mÈtrica em $M$.
+Logo $d$ √© uma m√©trica em $M$.
 \end{exercicio}
 
 \begin{exercicio}
-Mostre que a topologia $\mathcal T_d$ gerada pela mÈtrica $d$ coincide com a topologia original $\mathcal T_M$ de $M$.
+Mostre que a topologia $\mathcal T_d$ gerada pela m√©trica $d$ coincide com a topologia original $\mathcal T_M$ de $M$.
 
-Sugest„o: Conservando a notaÁ„o acima, note que $\mathcal T_M$ È gerada por 
+Sugest√£o: Conservando a nota√ß√£o acima, note que $\mathcal T_M$ √© gerada por 
 \[
 \left\{ \mathbf x(B_h(0,\varepsilon)), \mathbf x \text{ parametriza\c c\~ao de M, }\varepsilon > 0 \right\}.
 \] 
-Mas sempre existe uma bola $B_d(p,\eta) \subset M$ tal que $B_d(p,\eta) \subset \mathbf x(B_h(0,\varepsilon))$.
+Mas por (\ref{d mais fina}) sempre existe uma bola $B_d(p,\eta) \subset M$ tal que $B_d(p,\eta) \subset \mathbf x(B_h(0,\varepsilon))$.
 Portanto $\mathcal T_M \subset \mathcal T_d$.
-Para a outra inclus„o, defina
+Para a outra inclus√£o, defina
 \[
 H := \sup_{(x,y) \in SB} \sqrt{\left< y,y\right>} > 0,
 \]

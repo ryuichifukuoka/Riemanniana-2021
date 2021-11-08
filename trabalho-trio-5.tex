@@ -1,0 +1,294 @@
+\documentclass[twoside,openright,titlepage,numbers=noenddot,headinclude,  lineheaders footinclude=true,cleardoublepage=empty,BCOR=5mm,paper=a4,fontsize=12pt ]{scrbook} 
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[unicode]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[eulerchapternumbers,beramono]{classicthesis} 
+\usepackage{graphicx}
+\usepackage[brazil,portuguese, english]{babel}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{amsmath,pict2e}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{breqn}
+\usepackage{tikz-cd}
+\usepackage{pst-node}
+\usepackage{pdfpages}
+\usepackage{makeidx}
+\usepackage{blindtext}
+\usepackage[intoc, portuguese]{nomencl}
+\usepackage{nomencl}
+\usepackage[T1]{fontenc}
+
+
+\addtolength{\headsep}{0.6cm}
+\setlength{\textheight}{22.7cm}
+\setlength{\textwidth}{16.2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+\linespread{1.3}
+
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{prop}[teo]{Proposição}
+\newtheorem{afirm}[teo]{Afirmação}
+\newtheorem{cor}[teo]{Corolário}
+\newtheorem{defin}[teo]{Definição}
+\newtheorem{obs}[teo]{Observação}
+\newtheorem{exemplo}[teo]{Exemplo}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\RN}{\mathbb R^n}
+\newcommand{\RM}{\mathbb R^m}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\K}{\mathbb K}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cqd}{\begin{flushright}$_\blacksquare$\end{flushright}}
+\newcommand{\ck}{\mc{C}^k}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\gl}{\mathfrak {gl}}
+\newcommand{\Ad}{\hbox{Ad}}
+\newcommand{\oo}{_}
+\newcommand{\ad}{\hbox{ad}}
+\newcommand{\e}{\mathfrak e}
+\newcommand{\uu}{\mathfrak{u}}
+\makeatletter
+\newcommand{\bigcomp}{%
+  \DOTSB
+  \mathop{\vphantom{\sum}\mathpalette\bigcomp@\relax}%
+  \slimits@
+}
+\newcommand{\bigcomp@}[2]{%
+  \begingroup\m@th
+  \sbox\z@{$#1\sum$}%
+  \setlength{\unitlength}{0.9\dimexpr\ht\z@+\dp\z@}%
+  \vcenter{\hbox{%
+    \begin{picture}(1,1)
+    \bigcomp@linethickness{#1}
+    \put(0.5,0.5){\circle{1}}
+    \end{picture}%
+  }}%
+  \endgroup
+}
+\newcommand{\bigcomp@linethickness}[1]{%
+  \linethickness{%
+      \ifx#1\displaystyle 2\fontdimen8\textfont\else
+      \ifx#1\textstyle 1.65\fontdimen8\textfont\else
+      \ifx#1\scriptstyle 1.65\fontdimen8\scriptfont\else
+      1.65\fontdimen8\scriptscriptfont\fi\fi\fi 3
+  }%
+}
+
+\makeatother
+\title{Lista 5 Riemanniana}
+\author{Felipe, Luan e Thiago}
+\date{Novembro 2021}
+
+\begin{document}
+
+\maketitle
+\noindent \textbf{Exercício}: Construa em $\R^2$ uma métrica Riemanniana $g$,
+
+com a seguinte propriedade: 
+existem $p,q \in \R^2$ que não são ligados por uma geodésica.
+Explicite as componentes $g_{ij}$ da métrica $g$ em relação às coordenadas canônicas de $\R^2$.  
+\noindent\textit{Dem:} Seja $B(0,1)$ a bola aberta centrada em $0$ e raio $1$.
+Sabemos que existe um difeomorfismo $f : B(0, 1) \rightarrow \R^2$ dada por
+\begin{equation*}
+    f((x, y)) = \frac{(x, y)}{1 - || (x, y)||}.
+\end{equation*}
+Seja $< \cdot, \cdot > : \R^2 \times \R^2$ a métrica canônica de $\R^2$.
+Como $f$ é um difeomorfismo, podemos induzir uma métrica em $B(0, 1)$ de modo que $f$ seja uma isometria por \begin{equation*}
+    g_p(u, v) = f^*< u, v >_p = < df_p u, df_p v >.
+\end{equation*}
+Vamos calcular os $g_{ij}$ dessa métrica. 
+Com efeito, a matriz jacobiana da função $f$ em um ponto $(x,y) \in B(0,1)$ qualquer é dada por  
+\begin{equation*}
+   [df_p]= \begin{bmatrix}
+         \frac{x^2}{\sqrt{x^2+y^2}\left(1-\sqrt{x^2+y^2}\right)^2} + \frac{1}{1-\sqrt{x^2+y^2}} & \frac{xy}{\sqrt{x^2+y^2}\left(1-\sqrt{x^2+y^2}\right)^2} \\
+         \frac{xy}{\sqrt{x^2+y^2}\left(1-\sqrt{x^2+y^2}\right)^2} & \frac{y^2}{\sqrt{x^2+y^2}\left(1-\sqrt{x^2+y^2}\right)^2} + \frac{1}{1-\sqrt{x^2+y^2}}
+    \end{bmatrix}
+\end{equation*}
+que,
+em particular,
+considerando $f = (f_1,f_2)$ denotaremos por 
+\begin{equation*}
+    [df_p]=
+    \begin{bmatrix}
+         f_{1,x}(x,y) & f_{1,y}(x,y)\\
+         f_{2,x}(x,y) & f_{2,y}(x,y).
+    \end{bmatrix}
+\end{equation*}
+Dado $p = (x,y) \in B(0,1)$,
+segue que $T_p(B(0,1)) = \R^2$.
+Assim,
+considerando $\partial_1=(1,0)$ e $\partial_2=(0,1)$,
+temos 
+\begin{eqnarray*}
+    \langle \partial_1,\partial_1 \rangle_p&=&f_{1,x}(x,y)\\
+    \langle \partial_1,\partial_2 \rangle_p &=& \langle \partial_2,\partial_1 \rangle_p =f_{1,y} = f_{2,x}(x,y) \\
+    \langle \partial_2, \partial_2 \rangle_p&=&f_{2,y}(x,y).  
+\end{eqnarray*}
+Agora,
+considere o ponto $p_\epsilon = (0, \epsilon) \in B(0, 1)$.
+Vamos supor que sempre existe uma geodésica $\gamma : [0, 1] \rightarrow B(0,1)$ ligando $p_\epsilon$ e $O = (0,0)$. 
+Assim,
+como $f$ é uma isometria,
+temos que $f$ preserva geodésicas.
+Então, $f \circ \gamma$ é uma geodésica de $\R^2$ ligando $O$ e $f(p_\epsilon)$.
+Pela continuidade da $f$ temos que se $p_\epsilon \rightarrow (0, 1)$,
+então $||f(\gamma(t))|| \rightarrow \infty$,
+com $t = 1$.
+Pelo exercício $5$ do capítulo $7$ de Do Carmo,
+temos que se isso ocorre,
+temos uma contradição com o fato de $f \circ \gamma$ ser uma geodésica de $\R^2$.
+Pois,
+$\R^2$ admite uma geodésica para quaisquer dois pontos se,
+e somente se,
+toda curva regular que converge para o infinito,
+tem comprimento infinito.
+
+\textbf{Alternativa 2}
+
+\noindent\textit{Dem:} Considere a função $f: \R^2 \longrightarrow S^2 \setminus \{(0,0,-1)\}$,
+
+dada por
+\begin{equation*}
+    f(x,y) = \left(\frac{2x}{1+x^2+y^2}, \frac{2y}{1+x^2+y^2}, \frac{1-x^2-y^2}{x^2+y^2+1}\right). 
+\end{equation*}
+
+Em particular, tal função é difeomorfismo e induz uma métrica Riemanniana em $\R^2$, dada pela expressão
+\begin{equation}\label{exp1}
+    \langle u,v\rangle_{(x,y)} = \langle df_{(x,y)}(u),df_{(x,y)}(v) \rangle_{f(x,y)}. 
+\end{equation}
+de tal forma que $\R^2$ e $S^2\setminus \{(0,0,-1)\}$ sejam isométricos (Exemplo 2.5 - Manfredo, \textit{variedades imersas}). 
+
+Em particular, as geodésicas de $S^2$ são os arcos de circunferência máximos (com diâmetro 2). 
+
+Encontremos então a forma da matriz $g_{ij}$, dada na expressão (\ref{exp1}). 
+
+Em primeiro lugar, note que a métrica em $S^2 \setminus \{S\}$ pode ser induzida pela métrica  de $S^2$ através da inclusão $\iota: S^2 \setminus \{S\} \longrightarrow S^2$, da forma 
+\begin{equation}\label{exp2}
+    \langle u,v \rangle_p = \langle d \iota_p(u), d\iota_p(v)\rangle_{\iota(p)}. 
+\end{equation}
+haja vista que, fazendo uso das projeções estereográficas, $\iota$ é uma imersão injetiva. 
+
+Com isso, considerando $p \in S^2 \setminus \{S\}$ e $T_p (S^2 \setminus \{S\})$, como $d\iota_p$ é injetiva, temos que $T_p (S^2\setminus \{S\})$ pode ser identificado como subespaço de $T_p S^2$, pela injetividade de $d\iota_p$. 
+
+Daí (\ref{exp2}) é a restrição da métrica em $T_p S^2$ ao subespaço $T_p (S^2 \setminus \{S\})$.  
+
+Dados $(x,y)$ em $\R^2$ e $\varepsilon>0$, considerando as curvas $\alpha_1,\alpha_2: (-\varepsilon,\varepsilon) \longrightarrow \R^2$, dadas por 
+\begin{equation*}
+    \alpha_1(t) = (x+t,y), \alpha_2(t) = (x,y+t), 
+\end{equation*}
+temos $\alpha_1(0) = \alpha_2(0) = (x,y)$ e 
+\begin{equation*}
+    \partial_1 = \alpha_1'(0) = (1,0), \partial_2 = \alpha_2'(0) = (0,1)
+\end{equation*}
+de tal forma que $\{\partial_1,\partial_2\} \subset T_{(x,y)} \R^2$. 
+
+Como $\dim T_{(x,y)} \R^2 = 2$, temos $T_{(x,y)} \R^2 = \hbox{span}\langle \partial_1,\partial_2\rangle = \R^2$. Além disso, a matriz Jacobiana da função $f$ é dada pela expressão
+\begin{equation*}
+    df_{(x,y)} = 
+    \begin{bmatrix}
+        \frac{2}{1+x^2+y^2} - \frac{4x^2}{(1+x^2+y^2)^2} & \frac{-4xy}{(1+x^2+y^2)^2}\\
+        \frac{-4xy}{(1+x^2+y^2)^2} & \frac{2}{1+x^2+y^2} - \frac{4y^2}{(1+x^2+y^2)^2}\\
+        -\frac{2x}{1+x^2+y^2} - \frac{2x(1-x^2-y^2)}{(1+x^2+y^2)^2} & -\frac{2y}{1+x^2+y^2} - \frac{2y(1-x^2-y^2)}{(1+x^2+y^2)^2}
+    \end{bmatrix}. 
+\end{equation*}
+
+Considerando as notações $f = (f_1,f_2,f_3)$ e 
+\begin{equation*}
+    df_{(x,y)} = 
+    \begin{bmatrix}
+    f_{1,x} & f_{1,y}\\
+    f_{2,x} & f_{2,y}\\
+    f_{3,x} & f_{3,y}
+    \end{bmatrix}
+\end{equation*}
+dados $u = (u_1,u_2), v=(v_1,v_2) \in \R^2$, podemos escrever $\langle u,v\rangle_{(x,y)}$ como sendo \begin{eqnarray*}
+    \langle u,v\rangle_{(x,y)} &=& \langle df_{(x,y)}(u),df_{(x,y)}(v)\rangle_{f(x,y)}\\
+    &=&\scriptstyle{\langle (f_{1,x}u_1 + f_{1,y}u_2,f_{2,x}u_1 + f_{2,y}u_2,f_{3,x}u_1 + f_{3,y}u_2),(f_{1,x}v_1 + f_{1,y}v_2,f_{2,x}v_1 + f_{2,y}v_2,f_{3,x}v_1 + f_{3,y}v_2)\rangle.}\\
+    &=&(f_{1,x}u_1 + f_{1,y}u_2)(f_{1,x}v_1 + f_{1,y}v_2) +(f_{2,x}u_1 + f_{2,y}u_2)(f_{2,x}v_1 + f_{2,y}v_2)+ \\
+    & &+(f_{3,x}u_1 + f_{3,y}u_2)(f_{3,x}v_1 + f_{3,y}v_2) 
+\end{eqnarray*}
+
+Encontrando então os termos $\langle \partial_i,\partial_j\rangle_{(x,y)}$, $i,j=1,2$, temos 
+\begin{eqnarray*}
+    \langle \partial_1,\partial_1\rangle_{(x,y)} &=& f_{1,x}^2 + f_{2,x}^2 + f_{3,x}^3\\
+    \langle \partial_1,\partial_2\rangle_{(x,y)} &=& \langle \partial_2,\partial_1\rangle_{(x,y)} = f_{1,x}f_{1,y} + f_{2,x}f_{2,y} + f_{3,x}f_{3,y}\\
+    \langle \partial_1,\partial_1\rangle_{(x,y)} &=& f_{1,y}^2 + f_{2,y}^2 + f_{3,y}^3
+\end{eqnarray*}
+isto é 
+\begin{equation*}
+    [g_{(x,y)}] =
+    \begin{bmatrix}
+         f_{1,x}^2 + f_{2,x}^2 + f_{3,x}^3 & f_{1,x}f_{1,y} + f_{2,x}f_{2,y} + f_{3,x}f_{3,y}\\
+         f_{1,x}f_{1,y} + f_{2,x}f_{2,y} + f_{3,x}f_{3,y} & f_{1,y}^2 + f_{2,y}^2 + f_{3,y}^3
+    \end{bmatrix}. 
+\end{equation*}
+que, como cada função $f_{i,x}$ e $f_{j,y}$ é diferenciável para todo ponto $(x,y) \in \R^2$ e $i,j=1,2$, temos que os termos da matriz $[g_{(x,y)}]$ variam diferenciavelmente em $\R^2$.   
+
+Agora, para mostrar que existem pontos em $\R^2$ que não admitem segmentos de geodésicas que os conectem, considere os pontos $p = (0,1)$ e $q=(0,-\frac{\sqrt{2\varepsilon - \varepsilon^2}}{\varepsilon})$ em $\R^2$ para $0<\varepsilon<1$. 
+7
+Supondo por absurdo que $\gamma:[a,b] \longrightarrow\R^2$ é um segmento de geodésica que conecta $p$ a $q$, então 
+\begin{equation*}
+    \int_{a}^b ||\gamma'(t)||_{\gamma(t)}dt = c(b-a),
+\end{equation*}
+tem comprimento mínimo para $c>0$, dado por $c = ||\gamma'(t)||_{\gamma(t)}$ constante para todo $t \in [a,b].$ Em particular, temos $f(p) = (0,1,0)$ e $f(q) = (0,-\sqrt{2\varepsilon - \varepsilon^2},\varepsilon-1).$ Daí 
+\begin{eqnarray*}
+    \int_{a}^b ||(f\circ \gamma)'(t)||_{f(\gamma(t))}dt &=& \int_{a}^b ||df_{\gamma(t)}(\gamma'(t))||_{f(\gamma(t))}dt\\
+    &=& \int_{a}^b \sqrt{\langle df_{\gamma(t)}(\gamma'(t)),df_{\gamma(t)}(\gamma'(t))\rangle_{f(\gamma(t))}}dt\\
+    &=&\int_a^b \sqrt{\langle \gamma'(t),\gamma'(t)\rangle_{\gamma(t)}}dt\\
+    &=& \int_{a}^b ||\gamma'(t)||_{\gamma(t)}dt\\
+    &=&c(a-b)
+\end{eqnarray*}
+
+Assumiremos que geodésicas são preservadas por isometrias, isto é, se $g: M \longrightarrow N$ é uma isometria entre variedades Riemanniannas e $\gamma: I \subset \R \longrightarrow M$ é uma geodésica de $M$, então $g \circ \gamma: I \subset \R \longrightarrow N$ é uma geodésica de $N$.
+
+Dessa forma, a função $f \circ \gamma$ é uma geodésica de $S^2 \setminus \{S\}$. 
+
+Em particular, $f \circ \gamma$ não intersecta $S$. Dessa forma, fazendo uso das geodésicas em $S^2$, existe uma função $\alpha: [a',b'] \subset \R \longrightarrow S^2$ tal que $\alpha$ é um segmento de geodésica que conecta $f(p)$ a $f(q)$ e passa por $S$, satisfazendo
+\begin{equation*}
+     \int_{a'}^{b'} ||\alpha'(t)||_{\alpha(t)}dt < \int_{a}^b ||(f\circ \gamma)'(t)||_{f \circ \gamma(t)}dt.
+\end{equation*}
+
+Considere o conjunto 
+\begin{equation*}
+    C = \{\beta:[t_0,t_1] \longrightarrow S^2: \beta(t_0)=f(p),\beta(t_1)=f(q)\hbox{ e }\beta(t) \neq S, \forall t \in [t_0,t_1], \beta \in \mathcal{C}^1([t_0,t_1])\}. 
+\end{equation*}
+
+Note que $\gamma \in C$. Com isso, $C \neq \emptyset.$ 
+
+Suponha por absurdo que para todo $\beta \in C$, tem-se 
+\begin{equation*}
+    \int_{t_0}^{t_1} ||\beta'(t)||_{\beta(t)}dt \geq \int_{a}^b ||(f\circ \gamma)'(t)||_{f \circ \gamma(t)}dt. 
+\end{equation*}
+
+Em particular, $\alpha \in \hbox{cl}C$. Portanto, existe sequência $\{\alpha_n\}_{n \in \N}$ tal que $\alpha_n \longrightarrow \alpha$. 
+
+Pela continuidade de $|| \cdot ||$ e da integral, temos  
+\begin{equation*}
+    \int_{t_0}^{t_1}||\alpha_n'(t)||_{\alpha_n(t)}dt \longrightarrow \int_{a'}^{b'}||\alpha'(t)||_{\alpha(t)}dt
+\end{equation*}
+
+Portanto deve existir $n' \in \N$ tal que se $n > n'$, tem-se
+\begin{equation*}
+    \int_{t_0}^{t_1}||\alpha_n'(t)||_{\alpha_n(t)}dt\leq \int_{a}^b ||(f\circ \gamma)'(t)||_{f \circ \gamma(t)}dt
+\end{equation*}
+contradizendo a suposição inicial. 
+
+Porém, para $n >n'$, tem-se $\alpha_n(t)$ conectando $f(p)$ e $f(q)$, que não passa por $S$ e tem comprimento menor que $ \int_{a}^b ||(f\circ \gamma)'(t)||_{f \circ \gamma(t)}dt$, contradizendo a preservação da geodésica. 
+
+Portanto, não existem geodésicas conectando $p$ a $q$. 
+
+
+\end{document}

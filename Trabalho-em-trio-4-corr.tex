@@ -1,0 +1,239 @@
+\documentclass[twoside,openright,titlepage,numbers=noenddot,headinclude,  lineheaders footinclude=true,cleardoublepage=empty,BCOR=5mm,paper=a4,fontsize=12pt ]{scrbook} 
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[unicode]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[eulerchapternumbers,beramono]{classicthesis} 
+\usepackage{graphicx}
+\usepackage[brazil,portuguese, english]{babel}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{amsmath,pict2e}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{breqn}
+\usepackage{tikz-cd}
+\usepackage{pst-node}
+\usepackage{pdfpages}
+\usepackage{makeidx}
+\usepackage{blindtext}
+\usepackage[intoc, portuguese]{nomencl}
+\usepackage{nomencl}
+\usepackage[T1]{fontenc}
+
+
+\addtolength{\headsep}{0.6cm}
+\setlength{\textheight}{22.7cm}
+\setlength{\textwidth}{16.2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+\linespread{1.3}
+
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{prop}[teo]{Proposição}
+\newtheorem{afirm}[teo]{Afirmação}
+\newtheorem{cor}[teo]{Corolário}
+\newtheorem{defin}[teo]{Definição}
+\newtheorem{obs}[teo]{Observação}
+\newtheorem{exemplo}[teo]{Exemplo}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\RN}{\mathbb R^n}
+\newcommand{\RM}{\mathbb R^m}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\K}{\mathbb K}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cqd}{\begin{flushright}$_\blacksquare$\end{flushright}}
+\newcommand{\ck}{\mc{C}^k}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\gl}{\mathfrak {gl}}
+\newcommand{\Ad}{\hbox{Ad}}
+\newcommand{\oo}{_}
+\newcommand{\ad}{\hbox{ad}}
+\newcommand{\e}{\mathfrak e}
+\newcommand{\uu}{\mathfrak{u}}
+\makeatletter
+\newcommand{\bigcomp}{%
+  \DOTSB
+  \mathop{\vphantom{\sum}\mathpalette\bigcomp@\relax}%
+  \slimits@
+}
+\newcommand{\bigcomp@}[2]{%
+  \begingroup\m@th
+  \sbox\z@{$#1\sum$}%
+  \setlength{\unitlength}{0.9\dimexpr\ht\z@+\dp\z@}%
+  \vcenter{\hbox{%
+    \begin{picture}(1,1)
+    \bigcomp@linethickness{#1}
+    \put(0.5,0.5){\circle{1}}
+    \end{picture}%
+  }}%
+  \endgroup
+}
+\newcommand{\bigcomp@linethickness}[1]{%
+  \linethickness{%
+      \ifx#1\displaystyle 2\fontdimen8\textfont\else
+      \ifx#1\textstyle 1.65\fontdimen8\textfont\else
+      \ifx#1\scriptstyle 1.65\fontdimen8\scriptfont\else
+      1.65\fontdimen8\scriptscriptfont\fi\fi\fi 3
+  }%
+}
+
+\makeatother
+\title{Lista 4 Riemanniana}
+\author{}
+\date{Outubro 2021}
+
+\begin{document}
+
+
+\maketitle
+
+\noindent\textbf{Exercício:} Considere $\mathbb{R}_+^2 = \left\lbrace (x, y) \in \mathbb{R}^2 ; \ y > 0 \right\rbrace$ e a variedade Riemanniana $$ M = \left( \mathbb{R}_+^2, \frac{\delta _{ij}}{y^2} \right) .$$
+Mostre que se $c : \left[ 0, + \infty \right. ) \rightarrow M$ é uma curva parametrizada divergente, então seu comprimento é infinito, ou seja, $$ \displaystyle \lim _{b \rightarrow + \infty} \ell _0^b (c) = + \infty .$$
+
+\begin{enumerate}
+    \item Prove que o comprimento de $\beta : \left[ 0, 1 \right. ) \rightarrow M$, $\beta (t) = (0, 1 - t)$ é infinito. Faça o mesmo para $\eta : \left[ 1, + \infty \right. ) \rightarrow M$, $\eta (t) = (0, t)$.
+
+\noindent\textit{Dem:}  
+    $$ \begin{array}{ccl}
+\ell _0^1  (\beta)& = & \displaystyle \lim _{a \rightarrow 1^-} \int _0^a \sqrt{\langle \beta '(t), \beta '(t) \rangle} dt \\
+& = & \displaystyle \lim _{a \rightarrow 1^-} \int _0^a \sqrt{\langle (0, -1), (0, -1) \rangle} dt \\ 
+& = & \displaystyle \lim _{a \rightarrow 1^-} \int _0^a \sqrt{\frac{1}{(1 - t)^2}} dt \\ 
+& = & \displaystyle \lim _{a \rightarrow 1^-} \int _0^a \frac{1}{1 - t}dt \\ 
+& = & \displaystyle \lim _{a \rightarrow 1^-} (- \ln(\vert 1 - a \vert) - (- \ln (\vert 1 - 0 \vert )) ) \\
+& = & \displaystyle \lim _{a \rightarrow 1^-} - \ln (\vert 1 - a \vert) \\
+& = & + \infty 
+
+\\
+
+\\ 
+
+\ell _1^{\infty} (\eta) & = & \displaystyle \lim _{b \rightarrow + \infty} \int _1^b \sqrt{\langle \eta '(t), \eta '(t) \rangle} dt \\ 
+& = & \displaystyle \lim _{b \rightarrow + \infty} \int _1^b \sqrt{\langle (0, 1), (0, 1) \rangle} dt \\
+& = & \displaystyle \lim _{b \rightarrow + \infty} \int _1^b \sqrt{\frac{1}{t^2}}dt \\ 
+& = & \displaystyle \lim _{b \rightarrow + \infty} \int _1^b \frac{1}{t} dt \\ 
+& = & \displaystyle \lim _{b \rightarrow + \infty} (\ln(b) - \ln(1)) = + \infty .
+    \end{array} $$
+    
+    
+    \item Mostre que o comprimento de $c(t) = (c_1(t), c_2(t))$ em $M$ é maior ou igual ao comprimento de sua projeção $(0, c_2(t))$ no eixo $y$. 
+    
+    \noindent\textit{Dem:} Seja $c:[a,b]\rightarrow M$ definida por $c(t) = (c \oo 1 (t), c \oo 2 (t))$.
+    Considere $\pi \oo 2 (c) (t) =(0, c \oo 2 (t)) $ a projeção de $c$ no eixo $y$. 
+    Vejamos que $\ell \oo a ^b (c) \geq  \ell \oo a ^b (\pi \oo 2 (c))$. 
+    Em verdade, note que
+    \[
+        \ell \oo a ^b (c) = \int \oo a ^b \dfrac{\sqrt{{c'} ^2 \oo 1 (t) + {c'}^2 \oo 2 (t)}}{c\oo 2 (t)} dt \geq \int \oo a ^b \dfrac{\sqrt{{c'} ^2 \oo 2 (t) }}{c\oo 2 (t)} dt  = \ell  \oo a ^b (\pi \oo 2 (c)).
+    \]
+    \item Considere o retângulo $\mathcal{Q} = (-A, A) \times (\delta, R) \subset M$, com $\delta, R, A > 0$ e $\delta < R$. Observe que o comprimento de todas as curvas parametrizadas em $\left( \mathcal{Q}, \frac{\delta _{ij}}{y^2} \right)$ é maior do que o comprimento das curvas em $\left( \mathcal{Q}, \frac{\delta _{ij}}{R^2} \right)$. 
+    
+    \noindent\textit{Dem:} De fato, fixe $R, \delta, A > 0$ em $\mathbb{R}$ de tal forma que $\delta < R$ e considere o conjunto $\mathcal{Q} = (-A,A) \times (\delta,R)$. 
+    Em $\mathcal{Q}$, considere as métricas $\left(\frac{\delta_{ij}}{R^2}\right)$ e $\left(\frac{\delta_{ij}}{y^2}\right)$.
+    Afirmamos que, para toda curva parametrizada $\gamma: [a,b] \longrightarrow \R^2_{+}$, o comprimento de $\gamma$ em $\left(\mathcal{Q},\frac{\delta_{ij}}{y^2}\right)$ é maior que em $\left(\mathcal{Q},\frac{\delta_{ij}}{R^2}\right)$.
+    Com efeito, se $(x,y) \in \left(\mathcal{Q},\frac{\delta_{ij}}{y^2}\right)$, então $R > y.$
+    Portanto $\frac{1}{y} > \frac{1}{R}$.
+    Considerando $\gamma(t) = (\gamma_1(t),\gamma_2(t)) \in \mathcal{Q}$, então $\gamma_2(t) < R$ para todo $t \in [a,b]$. 
+    Se $\ell_a^b$ e $\hat{\ell}_a^{b}$ são os respectivos comprimentos em $\left( \mathcal{Q}, \frac{\delta _{ij}}{y^2} \right)$ e $\left( \mathcal{Q},  \frac{\delta _{ij}}{R^2} \right)$, então 
+    \begin{eqnarray*}
+        \ell_a^b(\gamma) &=&\int_a^b ||\gamma'(t)||_{\gamma(t)}dt \\
+        &=&\int_a^b \sqrt{\frac{\gamma_1'(t)^2 + \gamma_2'(t)^2}{\gamma_2(t)^2}} dt\\
+        &\geq& \int_a^b \sqrt{\frac{\gamma_1'(t)^2 + \gamma_2'(t)^2}{R^2}}dt\\
+        &=&\hat{\ell}_a^b(\gamma). 
+    \end{eqnarray*}
+    como gostaríamos.  
+    
+    
+    \item Use os itens de $1$ a $3$ para mostrar que para todo $L>0$, existe um retângulo $\mathcal{Q}_L \subset M$ tal que toda curva parametrizada que começa em $(0,1) \in M$ e sai do retângulo tem comprimento maior do que $L$.    
+    
+    \noindent\textit{Dem:} Seja $L>0$. Defina
+    \[
+        \mathcal{Q} \oo L  = \left[-e^{2L+2}, e^{2L+2}\right]
+        \times \left[1 - \dfrac{1}{e^{L+1}}, e^{L+1} \right].
+    \]
+    Seja $\gamma : [a,b) \rightarrow M$ uma curva diferenciável com $\gamma (a) = (0,1)$ e $\gamma([a,b))\not \subset \mathcal{Q}\oo L $.
+    Seja $t \oo 0 \in [a,b)$ o menor tempo tal que $\gamma (t \oo 0) \not \in \mathcal Q_L$.
+    Neste caso, $\gamma (t\oo 0) \in \partial \mathcal{Q} \oo L$, pela continuidade de $\gamma$. 
+    Se $\gamma \oo 2 (t \oo 0) = e^{L+1}$, então $ \eta ([1, e^{L+1}])\subset \pi \oo 2 (\gamma)([a, t \oo 0])$, temos
+    \[
+        \ell \oo a ^b (\gamma ) \geq \ell  \oo a ^{t \oo 0}(\pi\oo 2(\gamma))\geq \ell  \oo 1 ^{e^{L+1}} ( \eta ) = \int \oo 1 ^{e^{L+1}} \dfrac{1}{t}dt = \ln (e^{L+1}) - \ln (1) = L+1 >L.
+    \]
+    Se $\gamma \oo 2 (t \oo 0) = 1-\frac{1}{e^{L+1}}$, então $\beta   ([0, 1 - \frac{1}{e^{L+1}} ]) \subset \pi \oo 2 (\gamma) ([a, t\oo 0]) $. Assim
+    
+    \[
+        \begin{array}{rcl}
+            \ell \oo a ^b (\gamma ) 
+            &\geq & \ell  \oo a ^{t \oo 0}(\pi\oo 2(\gamma))\\
+            &\geq &\ell  \oo 0 ^{1-\frac{1}{e^{L+1}}} ( \beta ) \\
+            &=&     \displaystyle\int \oo 0 ^{1-\frac{1}{e^{L+1}}} \dfrac{1}{1-t}dt \\
+            &=& -\ln \left(1-\left({1-\frac{1}{e^{L+1}}}\right)\right) + \ln (1-0)\\
+            &=&  -\ln (e^{-L-1})  \\
+            &=&L+1\\
+            &>& L.
+        \end{array}
+    \]
+    Considere $r=e^{L+1}$. 
+    Suponha $\gamma \oo 1 (t \oo 0)  = e^{2L+2}$.
+    O caso $\gamma \oo 1 (t \oo 0)  = -e^{2L+2} $ é análogo.
+    Considere a curva $ \xi :[a,t \oo 0]\rightarrow M$ definida por $\xi (t) = (\gamma \oo 1 (t), r)$.
+    Assim, $\xi ([a,t \oo 0]) \subset \mathcal{Q}\oo L$ e 
+    \[
+        \ell \oo a ^{t \oo 0 } (\gamma) =\int_a^{t \oo 0} \sqrt{\frac{\gamma_1'(t)^2 + \gamma_2'(t)^2}{\gamma_2(t)^2}} dt
+        \geq 
+        \int_a^{t \oo 0} \frac{\sqrt{\gamma_1'(t)^2}}{r} dt
+        = \ell \oo a^{t \oo 0} (\xi)
+    \]
+    Consideremos $\alpha : [0, e^{2L + 2}] \rightarrow M$ dada por $\alpha (t) = (t, r)$. 
+    Então $$ \alpha ([0, e^{2L + 2}]) \subset \xi ([a, t_0]) $$ e, portanto, $$ \ell _a^{t \oo 0} (\xi) \geq \ell _0 ^{e ^{2L + 2}} (\alpha) .$$
+    Vejamos que $$\begin{array}{ccl} 
+    \ell _a ^{t \oo 0} (\alpha) & = & \displaystyle \int _0 ^{e^{2L + 2}} \sqrt{\langle (1, 0), (1, 0) \rangle} dt \\
+    & = & \displaystyle \int _0 ^{e^{2L + 2}} \frac{1}{r} dt \\ 
+    & = & \frac{1}{r} e^{2L + 2} > e^{L + 1} > L,
+    \end{array}$$
+    pois $r \leq e^{L + 1}$.
+    Logo, $\ell _a^{t \oo 0} (\xi) > L$.
+    
+    Sendo assim, $\ell _a^b (\gamma) \geq \ell _a^{t_0} (\gamma) > L$.
+
+
+
+
+\item Junte os itens de 1 a 4 e  conclua o exercício.
+
+Seja $c : \left[ 0, +\infty \right ) \longrightarrow M$ uma curva parametrizada divergente, com $c (0) = (0, 1)$. 
+Dado $L > 0$, consideremos o retângulo $\mathcal{Q}_L$ do item anterior.
+Considerando o compacto $\overline{\mathcal{Q}_L}$, temos que existe $T > 0$ de forma que $c(t) \notin \overline{\mathcal{Q}_L}$ para todo $t > T$.
+Em particular, $c$ sai de $\mathcal{Q}_L$ e, pelo item anterior, segue que $\ell (c) > L$.
+Sendo assim, $$ \displaystyle \lim _{b \rightarrow \infty} \ell _0^b (c) = + \infty .$$
+\end{enumerate}
+
+Para o caso geral, consideremos uma curva parametrizada divergente $c:[0, \infty) \longrightarrow M$ qualquer e denotemos $c(t) = (c_1(t), c_2(t))$.
+Então a curva começa em $(c_1(0), c_2(0))$.
+
+Consideremos $f : M \rightarrow M$ dada por $$ f(x, y) = \left( \frac{x - c_1(0)}{c_2(0)} , \frac{y}{c_2(0)}\right) .$$
+
+Vejamos que $$ df_{(p, q)}(\alpha '(0)) = (f \circ \alpha)'(0) = \left( \frac{\alpha _1'(0)}{c_2(0)}, \frac{\alpha _2 '(0)}{c_2(0)} \right) = \frac{\alpha '(0)}{c_2(0)} .$$
+
+Portanto, como $df_{(p, q)}$ é um isomorfismo, segue que $f$ é um difeomorfismo local. Como $f$ é claramente bijetora, segue que $f$ é um difeomorfismo.
+
+Por fim, dado $(p, q) \in M$, temos 
+\begin{equation*}
+\begin{array}{rcl}
+\langle (u_1, v_1), (u_2, v_2) \rangle _{(p, q)} & = & \dfrac{u_1u_2 + v_1v_2}{q^2} \\
+& = & \dfrac{\dfrac{u_1u_2}{c_2(0)^2} + \dfrac{v_1v_2}{c_2(0)^2}}{\dfrac{q^2}{c_2(0)^2}} \\
+& = & \langle df_{(p, q)}((u_1, v_1)), df_{(p, q)}((u_2, v_2)) \rangle _{f(p, q)}
+\end{array}
+\end{equation*}
+e, portanto, $f$ é uma isometria.
+
+Além disso, $f(c(0)) = (0, 1)$.
+Portanto, como o resultado é puramente métrico e válido para curvas que começam em $(0, 1)$, segue que o resultado é válido para a curva $c$.
+\end{document}
